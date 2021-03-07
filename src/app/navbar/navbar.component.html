@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-xxl navbar-dark bg-dark">
+  <div class="container-fluid">
+
+    <!-- Brand -->
+    <span class="nav-brand">
+      <a routerLink="/" class="navbar-brand">
+        <fa-icon [icon]="bookIcon" size="lg" class="icon"></fa-icon>
+        <span class="nav-brand-text">
+          IMS
+        </span>
+      </a>
+    </span>
+
+    <div>
+      <div class="input-group">
+        <input type="search" class="form-control nav-search" placeholder="Suchbegriff" [(ngModel)]="searchInputValue">
+        <span class="input-group-append">
+          <button class="btn btn-primary search-button" type="submit">
+            <fa-icon [icon]="searchIcon" size="lg" class="btn-icon"></fa-icon>
+          </button>
+          <button class="btn btn-secondary search-button" type="button" (click)="showSearchModal(this.searchInputValue)">
+            <fa-icon [icon]="caretIcon" size="lg" class="btn-icon"></fa-icon>
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <!-- Mobile Button -->
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Items -->
+    <div class="collapse navbar-collapse navbar-hidden" [ngClass]="{ 'show': navbarOpen }">
+
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item navbar-hidden-item">
+          <a class="nav-link active" routerLink="/">Home</a>
+        </li>
+
+        <li class="nav-item navbar-hidden-item">
+          <a class="nav-link" routerLink="/">Admin</a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+</nav>

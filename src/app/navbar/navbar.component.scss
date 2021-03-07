@@ -1,0 +1,42 @@
+.nav-brand{
+  border-bottom: 5px white solid;
+}
+
+.nav-brand-text{
+  letter-spacing: 4px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.icon{
+  color: white;
+  margin-right: 4px;
+  margin-left: 20px;
+}
+
+.search-button{
+  width: 80px;
+}
+
+::-webkit-search-cancel-button{
+  -webkit-appearance: none;
+}
+
+.navbar-hidden{
+  margin-top: 20px;
+  border-top: white 4px solid;
+  border-bottom: white 4px solid;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.navbar-hidden-item{
+
+}
+
+.navbar-hidden-item:hover{
+  text-decoration: underline;
+}
