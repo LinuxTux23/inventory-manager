@@ -11,6 +11,7 @@
   user-select: none;
   cursor: pointer;
   border-bottom: 2px solid black;
+  min-height: 200px;
 }
 
 .table-header:hover{
@@ -20,4 +21,12 @@
 .table-header-no-link {
   cursor: default;
   text-decoration: none;
+}
+
+tr:hover {
+  background-color: beige;
+}
+
+td{
+  text-align: center;
 }
