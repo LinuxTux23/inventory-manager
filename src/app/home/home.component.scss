@@ -1,0 +1,23 @@
+.main-wrapper {
+  margin-top: 100px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.table-header{
+  font-size: 19px;
+  text-align: center;
+  font-weight: bold;
+  user-select: none;
+  cursor: pointer;
+  border-bottom: 2px solid black;
+}
+
+.table-header:hover{
+  text-decoration: underline;
+}
+
+.table-header-no-link {
+  cursor: default;
+  text-decoration: none;
+}
