@@ -1,12 +1,68 @@
 <div class="main-wrapper">
-  <div class="detailed">
-    <div class="row">
 
-      <div class="col-12" *ngFor="let item of inventory">
-        <div class="col-4 detailed-item-name">ID:</div>
-        <div class="col-8 detailed-item-value">{{ item.id }}</div>
+  <ngb-alert [dismissible]="false" *ngIf="error">
+    <h3>
+      <strong>Error !</strong>
+    </h3>
+
+    <div id="error-message">ID konnte nicht gefunden werden !</div>
+
+    <br>
+
+    <strong id="sub-header">Angeforderte ID:</strong>
+
+    {{ id }}
+
+    <br>
+
+    <button class="btn btn-success btn-lg btn-home" [routerLink]="['/']">
+      Home
+    </button>
+  </ngb-alert>
+
+  <div class="detailed" *ngIf="!error">
+    <div class="container-fluid">
+
+      <div class="form-group">
+        <label for="id" class="form-label label">ID</label>
+        <input type="text" class="form-control col-md-3" id="id" [value]="item[0].id">
       </div>
 
+      <div class="form-group">
+        <label for="name" class="form-label label">Bezeichnung</label>
+        <input type="text" class="form-control col-md-3" id="name" [value]="item[0].name">
+      </div>
+
+      <div class="form-group">
+        <label for="type" class="form-label label">Art</label>
+        <input type="text" class="form-control col-md-3" id="type" [value]="item[0].type">
+      </div>
+
+      <div class="form-group">
+        <label for="container" class="form-label label">Kiste</label>
+        <input type="text" class="form-control col-md-3" id="container" [value]="item[0].container">
+      </div>
+
+      <div class="form-group">
+        <label for="container" class="form-label label">Kiste</label>
+        <select class="form-control col-md-3" id="container">
+          <option *ngFor="let item of container">{{ item.name }} - {{ item.location }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="test" class="form-label label"></label>
+        <input type="text" class="form-control col-md-3" id="test">
+      </div>
+
+
+
     </div>
+
+    <a class="btn btn-secondary">
+        <fa-icon [icon]="editIcon" size="lg" class="icon"></fa-icon>
+        Bearbeiten
+      </a>
+
   </div>
 </div>

@@ -2,9 +2,9 @@ export interface InventoryItem{
   id: number;
   name: string;
   type: string;
-  container: string;
+  container: number;
   combo: number;
-  fromContainer: string;
+  fromContainer: number;
   year: string;
   page: number;
   syn: string;

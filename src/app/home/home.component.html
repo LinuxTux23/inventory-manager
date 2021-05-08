@@ -13,10 +13,7 @@
       <th scope="col" class="table-header">Seite</th>
       <th scope="col" class="table-header">Syn</th>
       <th scope="col" class="table-header table-header-no-link">
-        <fa-icon [icon]="editIcon" size="lg" class="icon"></fa-icon>
-      </th>
-      <th scope="col" class="table-header table-header-no-link">
-        <fa-icon [icon]="glassesIcon" size="lg" class="icon"></fa-icon>
+        Öffnen
       </th>
     </tr>
     </thead>
@@ -33,13 +30,8 @@
       <td>{{ item.page }}</td>
       <td>{{ item.syn }}</td>
       <td>
-        <a [routerLink]="['/edit', item.id]" class="btn btn-secondary">
-          <fa-icon [icon]="editIcon" size="lg" class="icon"></fa-icon>
-        </a>
-      </td>
-      <td>
         <a [routerLink]="['/detailed', item.id]" class="btn btn-secondary">
-          <fa-icon [icon]="glassesIcon" size="lg" class="icon"></fa-icon>
+          <fa-icon [icon]="externalLinkIcon" size="lg" class="icon"></fa-icon>
         </a>
       </td>
     </tr>
