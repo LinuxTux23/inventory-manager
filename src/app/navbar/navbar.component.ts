@@ -21,10 +21,10 @@ export class NavbarComponent implements OnInit {
 
   searchInputValue: string;
 
-  navbarOpen = false;
+  navbarState = true;
 
   toggleNavbar(): void {
-    this.navbarOpen = !this.navbarOpen;
+    this.navbarState = !this.navbarState;
   }
 
   showSearchModal(searchValue: string): void {
