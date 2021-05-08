@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {FormsModule} from '@angular/forms';
 import { ItemEditComponent } from './item-edit/item-edit.component';
 import { ItemDetailedComponent } from './item-detailed/item-detailed.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ItemDetailedComponent } from './item-detailed/item-detailed.component';
         BrowserModule,
         AppRoutingModule,
         FontAwesomeModule,
-        FormsModule
+        FormsModule,
+        NgbModule
     ],
   providers: [],
   bootstrap: [AppComponent]
