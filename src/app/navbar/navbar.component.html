@@ -5,16 +5,17 @@
     <span class="nav-brand">
       <a routerLink="/" class="navbar-brand">
         <fa-icon [icon]="bookIcon" size="lg" class="icon"></fa-icon>
-        <span class="nav-brand-text">
+        <span class="nav-brand-text" placement="bottom" ngbTooltip="Inventory Management System">
           IMS
         </span>
       </a>
     </span>
 
     <div>
-      <div class="input-group">
-        <input type="search" class="form-control nav-search" placeholder="Suchbegriff" [(ngModel)]="searchInputValue">
+      <div class="input-group d-none d-sm-none d-md-flex">
+        <input type="search" class="form-control nav-search" placeholder="Suchbegriff" [(ngModel)]="searchInputValue" placement="bottom" ngbTooltip="Suchbegriff eingeben" triggers="focus">
         <span class="input-group-append">
+          <!-- Maybe not required, if search is on change -->
           <button class="btn btn-primary search-button" type="submit">
             <fa-icon [icon]="searchIcon" size="lg" class="btn-icon"></fa-icon>
           </button>
@@ -26,20 +27,20 @@
     </div>
 
     <!-- Mobile Button -->
-    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()" (focusout)="toggleNavbar()">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- Navbar Items -->
     <div class="collapse navbar-collapse navbar-hidden" [ngbCollapse]="navbarState">
 
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-4">
 
-        <li class="nav-item navbar-hidden-item">
+        <li class="nav-item">
           <a class="nav-link active" [routerLink]="['/']" (click)="toggleNavbar()">Home</a>
         </li>
 
-        <li class="nav-item navbar-hidden-item">
+        <li class="nav-item bottom-item">
           <a class="nav-link" [routerLink]="['/']" (click)="toggleNavbar()">Admin</a>
         </li>
 

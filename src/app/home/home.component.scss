@@ -23,8 +23,12 @@
   text-decoration: none;
 }
 
-tr:hover {
-  background-color: beige;
+tr{
+  text-align: center;
+}
+
+tr:hover{
+  background-color: beige !important;
 }
 
 td{

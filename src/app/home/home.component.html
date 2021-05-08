@@ -1,6 +1,6 @@
 <div class="main-wrapper">
 
-  <table class="table table-bordered">
+  <table class="table table-bordered table-striped">
     <thead>
     <tr>
       <th scope="col" class="table-header">ID</th>
@@ -32,12 +32,16 @@
       <td>{{ item.year }}</td>
       <td>{{ item.page }}</td>
       <td>{{ item.syn }}</td>
-      <td><a [routerLink]="['/edit', item.id]" class="btn btn-secondary">
-        <fa-icon [icon]="editIcon" size="lg" class="icon"></fa-icon>
-      </a></td>
-      <td><a [routerLink]="['/detailed', item.id]" class="btn btn-secondary">
-        <fa-icon [icon]="glassesIcon" size="lg" class="icon"></fa-icon>
-      </a></td>
+      <td>
+        <a [routerLink]="['/edit', item.id]" class="btn btn-secondary">
+          <fa-icon [icon]="editIcon" size="lg" class="icon"></fa-icon>
+        </a>
+      </td>
+      <td>
+        <a [routerLink]="['/detailed', item.id]" class="btn btn-secondary">
+          <fa-icon [icon]="glassesIcon" size="lg" class="icon"></fa-icon>
+        </a>
+      </td>
     </tr>
 
     </tbody>
