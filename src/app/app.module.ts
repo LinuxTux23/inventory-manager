@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 import { ItemEditComponent } from './item-edit/item-edit.component';
 import { ItemDetailedComponent } from './item-detailed/item-detailed.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         FormsModule,
         NgbModule
     ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
