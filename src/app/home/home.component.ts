@@ -23,6 +23,12 @@ export class HomeComponent implements OnInit {
 
   filteredInventoryIndexes: number[] = [];
 
+  pageList: number[] = [];
+
+  pages: number;
+
+  entriesPerPage: number;
+
   getInventoryItems(): void {
     this.inventory = this.inventoryService.getInventory();
   }
@@ -44,17 +50,36 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  calcNumberOfPages(entries: number): void {
+    this.pages = Math.round(this.inventory.length / entries);
+    for (let i = 1; i <= this.pages; i++) {
+      this.pageList.push(i);
+    }
+  }
+
+  switchToPage(): void {
+    const lastItem = this.filteredInventory.length;
+
+    this.filteredInventory = [];
+
+    for (let i = lastItem; i < this.inventory.length - this.entriesPerPage - 1; i++) {
+      this.filteredInventory.push(this.inventory[i]);
+    }
+    console.log(this.filteredInventory);
+  }
+
 
   ngOnInit(): void {
     this.getInventoryItems();
 
     if (this.cookieService.get('entriesPerPage')) {
-      this.limitInventory(Number(this.cookieService.get('entriesPerPage')));
+      this.entriesPerPage = Number(this.cookieService.get('entriesPerPage'));
+      this.limitInventory(this.entriesPerPage);
     } else{
       this.limitInventory(10);
     }
-
     this.countIndexes();
+    this.calcNumberOfPages(this.entriesPerPage);
   }
 
 }
