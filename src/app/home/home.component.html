@@ -4,7 +4,7 @@
     <div class="row d-flex justify-content-end nav-menu">
 
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-        <button type="button" class="btn btn-secondary" *ngFor="let slice of pageList" (click)="switchToPage()">{{ slice }}</button>
+        <button type="button" class="btn btn-secondary" *ngFor="let slice of pageList" (click)="limitInventory(this.entriesPerPage, slice)">{{ slice }}</button>
 
             <div ngbDropdown class="btn-group" role="group" >
               <button class="btn btn-primary" id="dropdownBasic1" ngbDropdownToggle>Einträge / Seite</button>

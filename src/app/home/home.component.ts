@@ -33,13 +33,14 @@ export class HomeComponent implements OnInit {
     this.inventory = this.inventoryService.getInventory();
   }
 
-  limitInventory(entries = 10): void {
+  limitInventory(entries = 10, index = 0): void {
     this.cookieService.set('entriesPerPage', entries.toString());
     this.filteredInventory = [];
     if (entries > this.inventory.length) {
       entries = this.inventory.length;
     }
-    for (let i = 0; i < entries; i++) {
+
+    for (let i = index; i < entries; i++) {
       this.filteredInventory.push(this.inventory[i]);
     }
   }
@@ -57,7 +58,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  switchToPage(): void {
+  /*switchToPage(): void {
     const lastItem = this.filteredInventory.length;
 
     this.filteredInventory = [];
@@ -66,7 +67,7 @@ export class HomeComponent implements OnInit {
       this.filteredInventory.push(this.inventory[i]);
     }
     console.log(this.filteredInventory);
-  }
+  }*/
 
 
   ngOnInit(): void {

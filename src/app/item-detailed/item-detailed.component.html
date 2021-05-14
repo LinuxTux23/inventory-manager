@@ -23,38 +23,77 @@
   <div class="detailed" *ngIf="!error">
     <div class="container-fluid">
 
-      <div class="form-group">
+      <div class="sub-header">
+        Allgemeines
+      </div>
+
+      <div class="form-group ml-4 mb-4">
         <label for="id" class="form-label label">ID</label>
         <input type="text" class="form-control col-md-3" id="id" [value]="item[0].id">
       </div>
 
-      <div class="form-group">
+      <div class="form-group ml-4 mb-4">
         <label for="name" class="form-label label">Bezeichnung</label>
         <input type="text" class="form-control col-md-3" id="name" [value]="item[0].name">
       </div>
 
-      <div class="form-group">
+      <div class="form-group ml-4 mb-4">
         <label for="type" class="form-label label">Art</label>
         <input type="text" class="form-control col-md-3" id="type" [value]="item[0].type">
       </div>
 
-      <div class="form-group">
+      <div class="form-group ml-4 mb-4">
         <label for="container" class="form-label label">Kiste</label>
-        <input type="text" class="form-control col-md-3" id="container" [value]="item[0].container">
-      </div>
-
-      <div class="form-group">
-        <label for="container" class="form-label label">Kiste</label>
-        <select class="form-control col-md-3" id="container">
-          <option *ngFor="let item of container">{{ item.name }} - {{ item.location }}</option>
+        <select class="form-control col-md-3">
+          <option id="container" *ngFor="let dataset of container" [selected]="this.dataset.id === this.item[0].container" >{{ dataset.name }} - {{ dataset.location }}</option>
         </select>
       </div>
 
-      <div class="form-group">
-        <label for="test" class="form-label label"></label>
-        <input type="text" class="form-control col-md-3" id="test">
+      <div class="sub-header">
+        Set Erstellung
       </div>
-      
+
+        <div class="form-group ml-4 mb-4">
+          <label for="container" class="form-label label">Set</label>
+          <select class="form-control col-md-3" disabled>
+            <option></option>
+          </select>
+        </div>
+
+        <div class="form-group ml-4 mb-4">
+          <label for="container" class="form-label label">Aus Container</label>
+          <select class="form-control col-md-3" disabled>
+            <option></option>
+          </select>
+        </div>
+
+      <div class="sub-header">
+        Verschiedenes
+      </div>
+
+      <div class="form-group ml-4 mb-4">
+        <label for="year" class="form-label label">Jahr</label>
+
+        <div class="input-group">
+        <select class="form-control col-md-3">
+          <option id="year" *ngFor="let year of yearList" [selected]="this.year === this.currentYear" >{{ year }}</option>
+        </select>
+          <div class="input-group-prepend">
+            <button class="btn btn-success" (click)="setToCurrentYear()">Auto</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group ml-4 mb-4">
+        <label for="page" class="form-label label">Seite</label>
+        <input type="text" class="form-control col-md-3" id="page">
+      </div>
+
+      <div class="form-group ml-4 mb-4">
+        <label for="syn" class="form-label label">Synonyme</label>
+        <input type="text" class="form-control col-md-3" id="syn">
+      </div>
+
     </div>
   </div>
 </div>

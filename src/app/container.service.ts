@@ -12,4 +12,9 @@ export class ContainerService {
   getContainer(): ContainerItem[] {
     return CONTAINER;
   }
+
+  getContainerById(queriedID: number): ContainerItem[] {
+    const output = CONTAINER.filter(item => item.id === queriedID);
+    return output;
+  }
 }

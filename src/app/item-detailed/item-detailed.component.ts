@@ -25,6 +25,28 @@ export class ItemDetailedComponent implements OnInit {
 
   error = false;
 
+  selectedContainer: ContainerItem[];
+
+  date: Date = new Date();
+
+  currentYear = Number(this.date.getFullYear());
+
+  yearList: number[] = [];
+
+  getContainer(queriedId: number): ContainerItem[] {
+      return this.containerService.getContainerById(queriedId);
+  }
+
+  generateYearList(): void {
+    for (let year = this.currentYear - 20; year <= this.currentYear; year ++) {
+      this.yearList.push(year);
+    }
+  }
+
+  setToCurrentYear(): void {
+
+  }
+
   ngOnInit(): void {
     this.id = parseInt(this.route.snapshot.params['id']);
 
@@ -32,7 +54,9 @@ export class ItemDetailedComponent implements OnInit {
       this.error = true;
     }else {
       this.item = this.inventoryService.getItemById(this.id);
-      console.log(this.container = this.containerService.getContainer());
+      this.container = this.containerService.getContainer();
+      this.selectedContainer = this.getContainer(this.item[0].container);
+      this.generateYearList();
     }
   }
 
