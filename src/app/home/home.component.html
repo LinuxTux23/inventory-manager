@@ -6,31 +6,20 @@
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
         <button type="button" class="btn btn-secondary" *ngFor="let slice of pageList" (click)="switchToPage()">{{ slice }}</button>
 
-            <div ngbDropdown class="btn-group" role="group">
+            <div ngbDropdown class="btn-group" role="group" >
               <button class="btn btn-primary" id="dropdownBasic1" ngbDropdownToggle>Einträge / Seite</button>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                 <button ngbDropdownItem (click)="limitInventory(10)">
                   <strong>10 (Standard)</strong>
                 </button>
-
                 <button ngbDropdownItem *ngFor="let item of filteredInventoryIndexes" (click)="limitInventory(item)">{{ item }} Einträge</button>
-
                 <button ngbDropdownItem (click)="limitInventory(inventory.length)">
                   <strong>{{ inventory.length }} Alle Einträge</strong>
                 </button>
               </div>
             </div>
+
       </div>
-
-
-
-
-
-
-
-      <!--<button class="btn btn-secondary">Vorherige Seite</button>
-      <button class="btn btn-secondary"></button>
-      <button class="btn btn-secondary">Nächste Seite</button>-->
 
     </div>
   </div>
