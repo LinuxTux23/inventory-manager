@@ -1,4 +1,8 @@
-
-
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+/* Define Archivo Medium Google Font */
+@font-face {
+  font-family: "Archivo Medium";
+  src: url("./assets/fonts/Archivo-Medium.ttf");
+}

@@ -3,6 +3,8 @@ import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faCaretSquareDown} from '@fortawesome/free-solid-svg-icons';
 import { NgModel } from '@angular/forms';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-navbar',
@@ -23,12 +25,12 @@ export class NavbarComponent implements OnInit {
 
   navbarState = true;
 
+  faPlusIcon = faPlus;
+
+  searchBarState = true;
+
   toggleNavbar(): void {
     this.navbarState = !this.navbarState;
-  }
-
-  showSearchModal(searchValue: string): void {
-    console.log(this.searchInputValue);
   }
 
   ngOnInit(): void {

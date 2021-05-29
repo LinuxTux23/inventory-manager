@@ -12,6 +12,7 @@ import { ItemDetailedComponent } from './item-detailed/item-detailed.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
