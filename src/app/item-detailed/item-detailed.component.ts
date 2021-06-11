@@ -33,6 +33,7 @@ export class ItemDetailedComponent implements OnInit {
 
   yearList: number[] = [];
 
+
   getContainer(queriedId: number): ContainerItem[] {
       return this.containerService.getContainerById(queriedId);
   }
@@ -43,8 +44,8 @@ export class ItemDetailedComponent implements OnInit {
     }
   }
 
-  setToCurrentYear(): void {
-
+  onFileChanged(event): void {
+    const file = event.target.files[0];
   }
 
   ngOnInit(): void {

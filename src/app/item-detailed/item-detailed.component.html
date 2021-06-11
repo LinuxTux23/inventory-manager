@@ -28,6 +28,14 @@
       </div>
 
       <div class="form-group ml-4 mb-4">
+        <label for="image" class="form-label label">Bild</label>
+        <div class="bg-secondary image-wrapper">
+          <img src="" id="image" class="img">
+        </div>
+        <input type="file" class="btn-choose" accept="image/png, image/jpeg">
+      </div>
+
+      <div class="form-group ml-4 mb-4">
         <label for="id" class="form-label label">ID</label>
         <input type="text" class="form-control col-md-3" id="id" [value]="item[0].id">
       </div>
@@ -76,10 +84,10 @@
 
         <div class="input-group">
         <select class="form-control col-md-3">
-          <option id="year" *ngFor="let year of yearList" [selected]="this.year === this.currentYear" >{{ year }}</option>
+          <option id="year" *ngFor="let year of yearList" [selected]="this.year === this.currentYear">{{ year }}</option>
         </select>
           <div class="input-group-prepend">
-            <button class="btn btn-success" (click)="setToCurrentYear()">Auto</button>
+            <button class="btn btn-success">Auto</button>
           </div>
         </div>
       </div>

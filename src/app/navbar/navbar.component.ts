@@ -33,6 +33,17 @@ export class NavbarComponent implements OnInit {
     this.navbarState = !this.navbarState;
   }
 
+  toggleSearchBar(): void {
+    this.searchBarState = !this.searchBarState;
+    if (this.navbarState) {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
+  }
+
   ngOnInit(): void {
 
   }
