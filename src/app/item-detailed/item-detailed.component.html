@@ -1,107 +1,124 @@
-<div class="main-wrapper">
+<form [formGroup]="inputForm">
+  <div class="main-wrapper">
 
-  <ngb-alert [dismissible]="false" *ngIf="error">
-    <h3>
-      <strong>Error !</strong>
-    </h3>
+    <!-- Export Alert into a module -->
+    <ngb-alert [dismissible]="false" *ngIf="error">
+      <h2>
+        <strong>Error !</strong>
+      </h2>
 
-    <div id="error-message">ID konnte nicht gefunden werden !</div>
+      <div id="error-message">ID konnte nicht gefunden werden !</div>
 
-    <br>
+      <div [ngbCollapse]="errorFurtherInformation">
+        <strong class="sub-header">Angeforderte ID:</strong>
 
-    <strong id="sub-header">Angeforderte ID:</strong>
+        <p>{{ failedQueryID }}</p>
 
-    {{ id }}
+        <strong class="sub-header">Error Message:</strong>
 
-    <br>
-
-    <button class="btn btn-success btn-lg btn-home" [routerLink]="['/']">
-      Home
-    </button>
-  </ngb-alert>
-
-  <div class="detailed" *ngIf="!error">
-    <div class="container-fluid">
-
-      <div class="sub-header">
-        Allgemeines
+        <p>{{ errorMessage }}</p>
       </div>
 
-      <div class="form-group ml-4 mb-4">
-        <label for="image" class="form-label label">Bild</label>
-        <div class="bg-secondary image-wrapper">
-          <img src="" id="image" class="img">
+      <div class="input-group d-flex justify-content-center">
+        <div class="input-group-prepend">
+          <button class="btn btn-success btn-lg btn-home" [routerLink]="['/']">
+            Home
+          </button>
         </div>
-        <input type="file" class="btn-choose" accept="image/png, image/jpeg">
+
+        <div class="input-group-append">
+          <button class="btn btn-warning btn-lg btn-home" (click)="errorFurtherInformation = !errorFurtherInformation">
+            Details
+          </button>
+        </div>
       </div>
 
-      <div class="form-group ml-4 mb-4">
-        <label for="id" class="form-label label">ID</label>
-        <input type="text" class="form-control col-md-3" id="id" [value]="item[0].id">
-      </div>
+    </ngb-alert>
 
-      <div class="form-group ml-4 mb-4">
-        <label for="name" class="form-label label">Bezeichnung</label>
-        <input type="text" class="form-control col-md-3" id="name" [value]="item[0].name">
-      </div>
+    <div class="detailed" *ngIf="!error">
+      <div class="container-fluid">
 
-      <div class="form-group ml-4 mb-4">
-        <label for="type" class="form-label label">Art</label>
-        <input type="text" class="form-control col-md-3" id="type" [value]="item[0].type">
-      </div>
-
-      <div class="form-group ml-4 mb-4">
-        <label for="container" class="form-label label">Kiste</label>
-        <select class="form-control col-md-3">
-          <option id="container" *ngFor="let dataset of container" [selected]="this.dataset.id === this.item[0].container" >{{ dataset.name }} - {{ dataset.location }}</option>
-        </select>
-      </div>
-
-      <div class="sub-header">
-        Set Erstellung
-      </div>
-
-        <div class="form-group ml-4 mb-4">
-          <label for="container" class="form-label label">Set</label>
-          <select class="form-control col-md-3" disabled>
-            <option></option>
-          </select>
+        <div class="sub-header">
+          Allgemeines - ID: {{ queryID }}
         </div>
 
         <div class="form-group ml-4 mb-4">
-          <label for="container" class="form-label label">Aus Container</label>
-          <select class="form-control col-md-3" disabled>
-            <option></option>
+          <label for="image" class="form-label label">Bild</label>
+          <div class="bg-secondary image-wrapper">
+            <img src="" id="image" class="img">
+          </div>
+          <input type="file" class="btn-choose" accept="image/png, image/jpeg">
+        </div>
+
+        <div class="form-group ml-4 mb-4">
+          <label for="id" class="form-label label">ID</label>
+<!--          <input type="text" class="form-control col-md-3" id="id" [value]="item[0].id">-->
+          <input type="text" class="form-control col-md-3" id="id" formControlName="id">
+        </div>
+
+        <div class="form-group ml-4 mb-4">
+          <label for="name" class="form-label label">Bezeichnung</label>
+          <input type="text" class="form-control col-md-3" id="name" [value]="item[0].name">
+        </div>
+
+        <div class="form-group ml-4 mb-4">
+          <label for="type" class="form-label label">Art</label>
+          <input type="text" class="form-control col-md-3" id="type" [value]="item[0].type">
+        </div>
+
+        <div class="form-group ml-4 mb-4">
+          <label for="container" class="form-label label">Kiste</label>
+          <select class="form-control col-md-3">
+            <option id="container" *ngFor="let dataset of container" [selected]="this.dataset.id === this.item[0].container" >{{ dataset.name }} - {{ dataset.location }}</option>
           </select>
         </div>
 
-      <div class="sub-header">
-        Verschiedenes
-      </div>
+        <div class="sub-header">
+          Set Erstellung
+        </div>
 
-      <div class="form-group ml-4 mb-4">
-        <label for="year" class="form-label label">Jahr</label>
+          <div class="form-group ml-4 mb-4">
+            <label for="container" class="form-label label">Set</label>
+            <select class="form-control col-md-3" disabled>
+              <option></option>
+            </select>
+          </div>
 
-        <div class="input-group">
-        <select class="form-control col-md-3">
-          <option id="year" *ngFor="let year of yearList" [selected]="this.year === this.currentYear">{{ year }}</option>
-        </select>
-          <div class="input-group-prepend">
-            <button class="btn btn-success">Auto</button>
+          <div class="form-group ml-4 mb-4">
+            <label for="container" class="form-label label">Aus Container</label>
+            <select class="form-control col-md-3" disabled>
+              <option></option>
+            </select>
+          </div>
+
+        <div class="sub-header">
+          Verschiedenes
+        </div>
+
+        <div class="form-group ml-4 mb-4">
+          <label for="year" class="form-label label">Jahr</label>
+
+          <div class="input-group">
+          <select class="form-control col-md-3">
+            <option id="year" *ngFor="let year of yearList" [selected]="this.year === this.currentYear">{{ year }}</option>
+          </select>
+            <div class="input-group-prepend">
+              <button class="btn btn-success">Auto</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="form-group ml-4 mb-4">
-        <label for="page" class="form-label label">Seite</label>
-        <input type="text" class="form-control col-md-3" id="page">
-      </div>
+        <div class="form-group ml-4 mb-4">
+          <label for="page" class="form-label label">Seite</label>
+          <input type="text" class="form-control col-md-3" id="page">
+        </div>
 
-      <div class="form-group ml-4 mb-4">
-        <label for="syn" class="form-label label">Synonyme</label>
-        <input type="text" class="form-control col-md-3" id="syn">
-      </div>
+        <div class="form-group ml-4 mb-4">
+          <label for="syn" class="form-label label">Synonyme</label>
+          <input type="text" class="form-control col-md-3" id="syn">
+        </div>
 
+      </div>
     </div>
   </div>
-</div>
+</form>

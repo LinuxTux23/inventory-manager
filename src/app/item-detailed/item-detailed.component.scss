@@ -6,7 +6,6 @@
 
 .btn-home{
   margin-top: 30px;
-  margin-left: 20px;
 }
 
 ngb-alert{
@@ -14,6 +13,9 @@ ngb-alert{
 
   #error-message{
     margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
   }
 
   #sub-header{
@@ -26,10 +28,10 @@ ngb-alert{
 }
 
 .sub-header {
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-size: 25px;
   border-bottom: 2px solid black;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  font-size: 25px;
 }
 
 .btn-choose{

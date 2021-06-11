@@ -5,6 +5,7 @@ import { InventoryService } from '../inventory.service';
 import { InventoryItem } from '../inventory-item';
 import { ContainerService } from '../container.service';
 import { ContainerItem } from '../container-item';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-item-detailed',
@@ -15,7 +16,9 @@ export class ItemDetailedComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private inventoryService: InventoryService, private containerService: ContainerService) { }
 
-  id: number;
+  queryID: number;
+
+  failedQueryID: string;
 
   item: InventoryItem[] = [];
 
@@ -25,6 +28,10 @@ export class ItemDetailedComponent implements OnInit {
 
   error = false;
 
+  errorMessage: string;
+
+  errorFurtherInformation = true;
+
   selectedContainer: ContainerItem[];
 
   date: Date = new Date();
@@ -33,6 +40,18 @@ export class ItemDetailedComponent implements OnInit {
 
   yearList: number[] = [];
 
+  inputForm = new FormGroup({
+    picture: new FormControl(''),
+    id: new FormControl(''),
+    name: new FormControl(''),
+    type: new FormControl(''),
+    container: new FormControl(''),
+    combo: new FormControl(''),
+    fromContainer: new FormControl(''),
+    year: new FormControl(''),
+    page: new FormControl(''),
+    syn: new FormControl('')
+  });
 
   getContainer(queriedId: number): ContainerItem[] {
       return this.containerService.getContainerById(queriedId);
@@ -49,16 +68,20 @@ export class ItemDetailedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = parseInt(this.route.snapshot.params['id']);
+    this.route.params.subscribe(params => {
+      this.failedQueryID = String(params.id);
+      this.queryID = Number(params.id);
+    });
 
-    if (isNaN(Number(this.id))){
+    if (isNaN(this.queryID)) {
       this.error = true;
-    }else {
-      this.item = this.inventoryService.getItemById(this.id);
+      this.errorMessage = 'Die übergebene ID ist nicht vom Typ Number, oder kann nicht implizit in Number umgewandelt werden.';
+    } else {
+      this.queryID = Number(this.queryID);
+      this.item = this.inventoryService.getItemById(this.queryID);
       this.container = this.containerService.getContainer();
       this.selectedContainer = this.getContainer(this.item[0].container);
       this.generateYearList();
     }
   }
-
 }

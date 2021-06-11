@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ItemEditComponent } from './item-edit/item-edit.component';
 import { ItemDetailedComponent } from './item-detailed/item-detailed.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -26,7 +26,8 @@ import { CookieService } from 'ngx-cookie-service';
         AppRoutingModule,
         FontAwesomeModule,
         FormsModule,
-        NgbModule
+        NgbModule,
+        ReactiveFormsModule
     ],
   providers: [CookieService],
   bootstrap: [AppComponent]
